@@ -10,15 +10,15 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        jackOptions {
+        /*jackOptions {
             enabled true
-        }
+        }*/
         vectorDrawables.useSupportLibrary = true
     }
-    compileOptions {
+    /*compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
+    }*/
     dataBinding {
         enabled = true
     }
@@ -30,19 +30,24 @@ android {
     }
 }
 
+ext.supportVersion = '25.2.0'
+ext.daggerVersion = '2.10-rc2'
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //dagger
-    compile 'com.google.dagger:dagger:2.10-rc2'
-    compile 'com.google.dagger:dagger-android:2.10-rc2'
-    compile 'com.google.dagger:dagger-android-support:2.10-rc2'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.10-rc2'
+    compile "com.google.dagger:dagger:$daggerVersion"
+    compile "com.google.dagger:dagger-android:$daggerVersion"
+    compile "com.google.dagger:dagger-android-support:$daggerVersion"
+    compile 'javax.inject:javax.inject:1'
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
     //
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:design:25.2.0'
+    compile "com.android.support:appcompat-v7:$supportVersion"
+    compile "com.android.support:design:$supportVersion"
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
     testCompile 'junit:junit:4.12'
 }
