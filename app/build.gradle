@@ -31,7 +31,7 @@ android {
 }
 
 ext.supportVersion = '25.2.0'
-ext.daggerVersion = '2.10-rc2'
+ext.daggerVersion = '2.10-rc4'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -42,7 +42,6 @@ dependencies {
     compile "com.google.dagger:dagger:$daggerVersion"
     compile "com.google.dagger:dagger-android:$daggerVersion"
     compile "com.google.dagger:dagger-android-support:$daggerVersion"
-    compile 'javax.inject:javax.inject:1'
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
     //
