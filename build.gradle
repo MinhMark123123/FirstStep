@@ -21,3 +21,7 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+ext{
+    ext.supportVersion = '25.3.0'
+    ext.daggerVersion = '2.10-rc4'
+}

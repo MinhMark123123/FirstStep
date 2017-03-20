@@ -30,8 +30,7 @@ android {
     }
 }
 
-ext.supportVersion = '25.2.0'
-ext.daggerVersion = '2.10-rc4'
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -39,14 +38,14 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //dagger
-    compile "com.google.dagger:dagger:$daggerVersion"
-    compile "com.google.dagger:dagger-android:$daggerVersion"
-    compile "com.google.dagger:dagger-android-support:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+    compile "com.google.dagger:dagger:$rootProject.daggerVersion"
+    compile "com.google.dagger:dagger-android:$rootProject.daggerVersion"
+    compile "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
     //
-    compile "com.android.support:appcompat-v7:$supportVersion"
-    compile "com.android.support:design:$supportVersion"
+    compile "com.android.support:appcompat-v7:$rootProject.supportVersion"
+    compile "com.android.support:design:$rootProject.supportVersion"
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
     testCompile 'junit:junit:4.12'
 }

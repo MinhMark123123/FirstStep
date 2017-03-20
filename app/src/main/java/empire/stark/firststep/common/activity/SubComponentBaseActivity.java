@@ -6,7 +6,7 @@ import dagger.android.AndroidInjector;
 /**
  * Created by YEN_MINH on 3/9/2017.
  */
-@Subcomponent(modules = BaseActivityModule.class)
+@Subcomponent
 public interface SubComponentBaseActivity extends AndroidInjector<BaseActivity> {
 
     @Subcomponent.Builder
