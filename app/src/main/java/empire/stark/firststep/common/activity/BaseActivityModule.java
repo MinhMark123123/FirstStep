@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import dagger.Binds;
 import dagger.Module;
+import dagger.Provides;
 import dagger.android.ActivityKey;
 import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
@@ -20,4 +21,6 @@ public abstract class BaseActivityModule {
     @ActivityKey(BaseActivity.class)
     abstract AndroidInjector.Factory<? extends Activity> bindActivityInjectorFactory(SubComponentBaseActivity.Builder
                                                                                              builder);
+
+
 }

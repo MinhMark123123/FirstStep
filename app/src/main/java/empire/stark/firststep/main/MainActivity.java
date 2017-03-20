@@ -14,13 +14,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import empire.stark.firststep.R;
+import empire.stark.firststep.common.activity.BaseActivity;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
