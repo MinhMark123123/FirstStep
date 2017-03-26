@@ -3,6 +3,7 @@ package empire.stark.firststep.main;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,11 +14,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import javax.inject.Inject;
+
 import empire.stark.firststep.R;
 import empire.stark.firststep.common.activity.BaseActivity;
+import empire.stark.firststep.data.YenMinh;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    YenMinh yenMinh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,11 @@ public class MainActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        if(yenMinh != null){
+            Log.d("MainActivity", "inject success");
+        }else{
+            Log.e("MainActivity", "inject un success");
+        }
     }
 
     @Override
