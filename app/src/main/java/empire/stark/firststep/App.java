@@ -25,7 +25,11 @@ public class App extends Application implements HasDispatchingActivityInjector {
          Create component and inject it .
          This way AppComponent will be create as same as builder.build but no app module
          */
-        DaggerAppComponent.create().inject(this);
+        DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .build()
+                .inject(this);
+        //DaggerAppComponent.create().inject(this);
     }
 
 
