@@ -7,19 +7,12 @@ import dagger.Module;
 import dagger.android.ActivityKey;
 import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
-import empire.stark.firststep.main.MainActivity;
-import empire.stark.firststep.main.SubComponentMainActivity;
 
 
 /**
  * Created by YEN_MINH on 3/9/2017.
  */
-@Module(subcomponents =
-        {
-                SubComponentBaseActivity.class,
-                SubComponentMainActivity.class
-        }
-)
+@Module(subcomponents = SubComponentBaseActivity.class)
 public abstract class SubModuleBaseActivity {
 
     @Binds
@@ -28,10 +21,10 @@ public abstract class SubModuleBaseActivity {
     public abstract AndroidInjector.Factory<? extends Activity>
     bindActivityInjectorFactory(SubComponentBaseActivity.Builder builder);
 
-    @Binds
+    /*@Binds
     @IntoMap
     @ActivityKey(MainActivity.class)
     public abstract AndroidInjector.Factory<? extends Activity>
-    bindMainActivityInjectorFactory(SubComponentMainActivity.Builder builder);
+    bindMainActivityInjectorFactory(SubComponentMainActivity.Builder builder);*/
 
 }

@@ -10,26 +10,34 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjection;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasDispatchingFragmentInjector;
-import dagger.android.support.DaggerAppCompatActivity;
+import dagger.android.support.HasDispatchingSupportFragmentInjector;
 
 /**
  * Created by YEN_MINH on 3/9/2017.
  */
 
-public class BaseActivity extends DaggerAppCompatActivity implements HasDispatchingFragmentInjector {
+public class BaseActivity extends AppCompatActivity implements
+        HasDispatchingSupportFragmentInjector {
+
+   /* @Inject
+    DispatchingAndroidInjector<Fragment> fragmentInjector;*/
 
     @Inject
-    DispatchingAndroidInjector<Fragment> fragmentInjector;
+    DispatchingAndroidInjector<android.support.v4.app.Fragment> fragmentSupportInjector;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-
     }
 
-    @Override
+    /*@Override
     public DispatchingAndroidInjector<Fragment> fragmentInjector() {
         return fragmentInjector;
+    }*/
+
+    @Override
+    public DispatchingAndroidInjector<android.support.v4.app.Fragment> supportFragmentInjector() {
+        return fragmentSupportInjector;
     }
 }
