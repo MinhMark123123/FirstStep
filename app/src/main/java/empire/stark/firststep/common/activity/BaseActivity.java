@@ -16,12 +16,12 @@ import dagger.android.support.HasDispatchingSupportFragmentInjector;
  * Created by YEN_MINH on 3/9/2017.
  */
 
-public class BaseActivity extends AppCompatActivity implements
+public class BaseActivity extends AppCompatActivity implements HasDispatchingFragmentInjector,
         HasDispatchingSupportFragmentInjector {
 
-   /* @Inject
-    DispatchingAndroidInjector<Fragment> fragmentInjector;*/
 
+    @Inject
+    DispatchingAndroidInjector<android.app.Fragment> frameworkFragmentInjector;
     @Inject
     DispatchingAndroidInjector<android.support.v4.app.Fragment> fragmentSupportInjector;
 
@@ -39,5 +39,10 @@ public class BaseActivity extends AppCompatActivity implements
     @Override
     public DispatchingAndroidInjector<android.support.v4.app.Fragment> supportFragmentInjector() {
         return fragmentSupportInjector;
+    }
+
+    @Override
+    public DispatchingAndroidInjector<Fragment> fragmentInjector() {
+        return frameworkFragmentInjector;
     }
 }

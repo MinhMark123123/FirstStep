@@ -3,6 +3,7 @@ package empire.stark.firststep.common.fragment;
 import dagger.Binds;
 import dagger.Module;
 import dagger.android.AndroidInjector;
+import dagger.android.FragmentKey;
 import dagger.multibindings.IntoMap;
 
 /**

@@ -13,14 +13,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import javax.inject.Inject;
+
 import empire.stark.firststep.R;
 import empire.stark.firststep.common.activity.BaseActivity;
 
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MainActivityContract.View {
 
-   /* @Inject
-    YenMinh yenMinh;*/
+    /* @Inject
+     YenMinh yenMinh;*/
+    @Inject
+    MainActivity activity;
+
+    @Inject
+    MainActivityPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,16 @@ public class MainActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        if (activity != null) {
+            Log.d("MainActivity", "MainActivity inject success");
+        } else {
+            Log.e("MainActivity", "MainActivity inject un success");
+        }
+        if (presenter != null) {
+            Log.d("MainActivity", "presenter inject success");
+        } else {
+            Log.e("MainActivity", "presenter inject un success");
+        }
         /*if(yenMinh != null){
             Log.d("MainActivity", "inject success");
         }else{
@@ -108,5 +125,10 @@ public class MainActivity extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void setPresenter(MainActivityContract.Presenter presenter) {
+
     }
 }
