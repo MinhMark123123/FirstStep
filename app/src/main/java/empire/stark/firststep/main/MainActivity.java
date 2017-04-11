@@ -1,9 +1,10 @@
 package empire.stark.firststep.main;
 
+import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,18 +17,20 @@ import android.view.View;
 import javax.inject.Inject;
 
 import empire.stark.firststep.R;
+import empire.stark.firststep.cat.CatActivity;
 import empire.stark.firststep.common.activity.BaseActivity;
+import empire.stark.firststep.data.YenMinh;
 
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener, MainActivityContract.View {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-    /* @Inject
-     YenMinh yenMinh;*/
+    @Inject
+    YenMinh yenMinh;
     @Inject
     MainActivity activity;
-
     @Inject
-    MainActivityPresenter presenter;
+    Application application;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +38,28 @@ public class MainActivity extends BaseActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        if (activity != null) {
+            Log.d("MainActivity", "MainActivity inject success");
+        } else {
+            Log.e("MainActivity", "MainActivity inject un success");
+        }
+        if (application != null) {
+            Log.d("MainActivity", "application inject success");
+        } else {
+            Log.e("MainActivity", "application inject un success");
+        }
+        if (yenMinh != null) {
+            Log.d("MainActivity", "yenMinh inject success");
+        } else {
+            Log.e("MainActivity", "yenMinh inject un success");
+        }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(activity, CatActivity.class));
+               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
             }
         });
 
@@ -53,21 +71,6 @@ public class MainActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        if (activity != null) {
-            Log.d("MainActivity", "MainActivity inject success");
-        } else {
-            Log.e("MainActivity", "MainActivity inject un success");
-        }
-        if (presenter != null) {
-            Log.d("MainActivity", "presenter inject success");
-        } else {
-            Log.e("MainActivity", "presenter inject un success");
-        }
-        /*if(yenMinh != null){
-            Log.d("MainActivity", "inject success");
-        }else{
-            Log.e("MainActivity", "inject un success");
-        }*/
     }
 
     @Override
@@ -127,8 +130,5 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
-    @Override
-    public void setPresenter(MainActivityContract.Presenter presenter) {
 
-    }
 }

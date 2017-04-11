@@ -1,11 +1,13 @@
 package empire.stark.firststep.main.dagger;
 
 import android.app.Activity;
+import android.app.Application;
+import android.util.Log;
 
 import dagger.Module;
 import dagger.Provides;
+import empire.stark.firststep.data.YenMinh;
 import empire.stark.firststep.main.MainActivity;
-import empire.stark.firststep.main.MainActivityContract;
 
 /**
  * Created by YEN_MINH on 4/11/2017 3:10 AM.
@@ -15,13 +17,19 @@ import empire.stark.firststep.main.MainActivityContract;
 
 @Module
 public class MainActivityModule {
+
     @Provides
-    Activity activity(MainActivity mainActivity) {
-        return mainActivity;
+    YenMinh application(Application application) {
+        if (application != null) {
+            Log.d("MainActivityModule", "application != null");
+        } else {
+            Log.e("MainActivityModule", "application == null");
+        }
+        return new YenMinh(application);
     }
 
     @Provides
-    MainActivityContract.View view(MainActivity mainActivity) {
+    Activity activity(MainActivity mainActivity) {
         return mainActivity;
     }
 }

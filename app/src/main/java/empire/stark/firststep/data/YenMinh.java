@@ -1,5 +1,7 @@
 package empire.stark.firststep.data;
 
+import android.app.Application;
+
 /**
  * Created by YEN_MINH on 3/25/2017 3:35 AM.
  * Code and Life ( ^ .,,. ^ )
@@ -7,28 +9,11 @@ package empire.stark.firststep.data;
  */
 
 public class YenMinh {
-    private String mId;
-    private String mTitle;
+    private final Application mApplication;
 
-    public YenMinh(String mId, String mTitle) {
-        this.mId = mId;
-        this.mTitle = mTitle;
+    public YenMinh(Application application) {
+        this.mApplication = application;
     }
 
-    public String getTitle() {
-        return mTitle;
-    }
 
-    public void setTitle(String mTitle) {
-        this.mTitle = mTitle;
-    }
-
-    public String getId() {
-    
-        return mId;
-    }
-
-    public void setId(String mId) {
-        this.mId = mId;
-    }
 }

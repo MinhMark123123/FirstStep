@@ -2,6 +2,8 @@ package empire.stark.firststep;
 
 import android.app.Application;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -17,6 +19,7 @@ public class AppModule {
     public AppModule(Application application) {
         this.mApplication = application;
     }
+    @Singleton
     @Provides
     Application application(){
         return mApplication;
