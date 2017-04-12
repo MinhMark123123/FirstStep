@@ -1,5 +1,6 @@
 package empire.stark.firststep.common.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
@@ -15,6 +16,7 @@ public class BaseFragment extends Fragment {
     public void onAttach(Context context) {
         AndroidSupportInjection.inject(this);
         super.onAttach(context);
-
     }
+
+
 }

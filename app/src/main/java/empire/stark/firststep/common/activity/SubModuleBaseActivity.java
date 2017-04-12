@@ -9,7 +9,7 @@ import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
 import empire.stark.firststep.cat.CatActivity;
 import empire.stark.firststep.cat.dagger.CatActivitySubComponent;
-import empire.stark.firststep.main.MainActivity;
+import empire.stark.firststep.main.view.MainActivity;
 import empire.stark.firststep.main.dagger.MainActivitySubComponent;
 
 

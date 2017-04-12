@@ -18,8 +18,6 @@ import dagger.android.support.HasDispatchingSupportFragmentInjector;
 
 public class BaseActivity extends AppCompatActivity implements HasDispatchingFragmentInjector,
         HasDispatchingSupportFragmentInjector {
-
-
     @Inject
     DispatchingAndroidInjector<android.app.Fragment> frameworkFragmentInjector;
     @Inject
@@ -30,11 +28,6 @@ public class BaseActivity extends AppCompatActivity implements HasDispatchingFra
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
     }
-
-    /*@Override
-    public DispatchingAndroidInjector<Fragment> fragmentInjector() {
-        return fragmentInjector;
-    }*/
 
     @Override
     public DispatchingAndroidInjector<android.support.v4.app.Fragment> supportFragmentInjector() {

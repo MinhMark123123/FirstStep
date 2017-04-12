@@ -7,7 +7,8 @@ import android.util.Log;
 import dagger.Module;
 import dagger.Provides;
 import empire.stark.firststep.data.YenMinh;
-import empire.stark.firststep.main.MainActivity;
+import empire.stark.firststep.main.MainActivityContract;
+import empire.stark.firststep.main.view.MainActivity;
 
 /**
  * Created by YEN_MINH on 4/11/2017 3:10 AM.
@@ -19,6 +20,11 @@ import empire.stark.firststep.main.MainActivity;
 public class MainActivityModule {
 
     @Provides
+    MainActivityContract.View view(MainActivity mainActivity) {
+        return mainActivity;
+    }
+
+    @Provides
     YenMinh application(Application application) {
         if (application != null) {
             Log.d("MainActivityModule", "application != null");
@@ -28,8 +34,9 @@ public class MainActivityModule {
         return new YenMinh(application);
     }
 
-    @Provides
+
+    /*@Provides
     Activity activity(MainActivity mainActivity) {
         return mainActivity;
-    }
+    }*/
 }

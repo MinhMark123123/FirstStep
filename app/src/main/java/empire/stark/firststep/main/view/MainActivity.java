@@ -1,4 +1,4 @@
-package empire.stark.firststep.main;
+package empire.stark.firststep.main.view;
 
 import android.app.Application;
 import android.content.Intent;
@@ -20,16 +20,18 @@ import empire.stark.firststep.R;
 import empire.stark.firststep.cat.CatActivity;
 import empire.stark.firststep.common.activity.BaseActivity;
 import empire.stark.firststep.data.YenMinh;
+import empire.stark.firststep.main.MainActivityContract;
+import empire.stark.firststep.main.MainActivityPresenter;
 
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements MainActivityContract.View, NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
     YenMinh yenMinh;
     @Inject
-    MainActivity activity;
-    @Inject
     Application application;
+    @Inject
+    MainActivityPresenter presenter;
 
 
     @Override
@@ -38,11 +40,6 @@ public class MainActivity extends BaseActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if (activity != null) {
-            Log.d("MainActivity", "MainActivity inject success");
-        } else {
-            Log.e("MainActivity", "MainActivity inject un success");
-        }
         if (application != null) {
             Log.d("MainActivity", "application inject success");
         } else {
@@ -57,9 +54,7 @@ public class MainActivity extends BaseActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(activity, CatActivity.class));
-               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
+                startActivity(new Intent(MainActivity.this, CatActivity.class));
             }
         });
 
@@ -71,6 +66,22 @@ public class MainActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //
+        getSupportFragmentManager().beginTransaction().add(R.id.activity_main_container, new MainFragment(),
+                MainFragment.TAG).commit();
+        //
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        presenter.start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        presenter.stop();
     }
 
     @Override
@@ -131,4 +142,8 @@ public class MainActivity extends BaseActivity
     }
 
 
+    @Override
+    public void setPresenter(MainActivityContract.Presenter presenter) {
+
+    }
 }
