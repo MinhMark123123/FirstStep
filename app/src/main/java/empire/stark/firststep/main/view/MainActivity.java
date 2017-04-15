@@ -1,20 +1,38 @@
-package empire.stark.firststep;
+package empire.stark.firststep.main.view;
 
+import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import javax.inject.Inject;
+
+import empire.stark.firststep.R;
+import empire.stark.firststep.cat.CatActivity;
+import empire.stark.firststep.common.BaseActivity;
+import empire.stark.firststep.data.YenMinh;
+import empire.stark.firststep.main.MainActivityContract;
+import empire.stark.firststep.main.MainActivityPresenter;
+
+public class MainActivity extends BaseActivity
+        implements MainActivityContract.View, NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    YenMinh yenMinh;
+    @Inject
+    Application application;
+    @Inject
+    MainActivityPresenter presenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,24 +40,48 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        if (application != null) {
+            Log.d("MainActivity", "application inject success");
+        } else {
+            Log.e("MainActivity", "application inject un success");
+        }
+        if (yenMinh != null) {
+            Log.d("MainActivity", "yenMinh inject success");
+        } else {
+            Log.e("MainActivity", "yenMinh inject un success");
+        }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(MainActivity.this, CatActivity.class));
             }
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //
+        getSupportFragmentManager().beginTransaction().add(R.id.activity_main_container, new MainFragment(),
+                MainFragment.TAG).commit();
+        //
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        presenter.start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        presenter.stop();
     }
 
     @Override
@@ -97,5 +139,11 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    @Override
+    public void setPresenter(MainActivityContract.Presenter presenter) {
+
     }
 }
