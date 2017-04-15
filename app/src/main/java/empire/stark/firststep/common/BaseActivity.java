@@ -1,4 +1,4 @@
-package empire.stark.firststep.common.activity;
+package empire.stark.firststep.common;
 
 import android.app.Fragment;
 import android.os.Bundle;

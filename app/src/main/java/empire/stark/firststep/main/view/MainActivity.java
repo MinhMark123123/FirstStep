@@ -18,7 +18,7 @@ import javax.inject.Inject;
 
 import empire.stark.firststep.R;
 import empire.stark.firststep.cat.CatActivity;
-import empire.stark.firststep.common.activity.BaseActivity;
+import empire.stark.firststep.common.BaseActivity;
 import empire.stark.firststep.data.YenMinh;
 import empire.stark.firststep.main.MainActivityContract;
 import empire.stark.firststep.main.MainActivityPresenter;

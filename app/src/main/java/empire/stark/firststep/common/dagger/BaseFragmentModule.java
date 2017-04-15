@@ -1,9 +1,10 @@
-package empire.stark.firststep.common.fragment;
+package empire.stark.firststep.common.dagger;
 
 import dagger.Binds;
 import dagger.Module;
 import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
+import empire.stark.firststep.common.BaseFragment;
 import empire.stark.firststep.main.dagger.MainFragmentSubComponent;
 import empire.stark.firststep.main.view.MainFragment;
 

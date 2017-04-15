@@ -2,6 +2,7 @@ package empire.stark.firststep.main.dagger;
 
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
+import empire.stark.firststep.common.dagger.BaseFragmentModule;
 import empire.stark.firststep.main.view.MainActivity;
 
 /**
@@ -9,7 +10,7 @@ import empire.stark.firststep.main.view.MainActivity;
  * Code and Life ( ^ .,,. ^ )
  * ---------------------------------------------
  */
-@Subcomponent(modules = MainActivityModule.class)
+@Subcomponent(modules = {MainActivityModule.class})
 public interface MainActivitySubComponent extends AndroidInjector<MainActivity> {
 
     @Subcomponent.Builder

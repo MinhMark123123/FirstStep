@@ -1,4 +1,4 @@
-package empire.stark.firststep.common.activity;
+package empire.stark.firststep.common.dagger;
 
 import android.app.Activity;
 
@@ -9,6 +9,7 @@ import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
 import empire.stark.firststep.cat.CatActivity;
 import empire.stark.firststep.cat.dagger.CatActivitySubComponent;
+import empire.stark.firststep.common.BaseActivity;
 import empire.stark.firststep.main.view.MainActivity;
 import empire.stark.firststep.main.dagger.MainActivitySubComponent;
 
@@ -17,7 +18,7 @@ import empire.stark.firststep.main.dagger.MainActivitySubComponent;
  * Created by YEN_MINH on 3/9/2017.
  */
 @Module(subcomponents = {SubComponentBaseActivity.class, MainActivitySubComponent.class, CatActivitySubComponent.class})
-public abstract class SubModuleBaseActivity {
+public abstract class BaseActivityModule {
 
     @Binds
     @IntoMap

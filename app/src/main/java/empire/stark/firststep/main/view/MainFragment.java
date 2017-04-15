@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import javax.inject.Inject;
 
 import empire.stark.firststep.R;
-import empire.stark.firststep.common.fragment.BaseFragment;
+import empire.stark.firststep.common.BaseFragment;
 import empire.stark.firststep.main.MainFragmentContract;
 import empire.stark.firststep.main.MainFragmentPresenter;
 

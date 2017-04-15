@@ -1,13 +1,15 @@
-package empire.stark.firststep.common.activity;
+package empire.stark.firststep.common.dagger;
 
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
-import empire.stark.firststep.common.fragment.BaseFragmentModule;
+import empire.stark.firststep.common.BaseActivity;
+import empire.stark.firststep.common.dagger.scope.PerActivity;
 
 /**
  * Created by YEN_MINH on 3/9/2017.
  */
-@Subcomponent/*(modules = BaseFragmentModule.class)*/
+@PerActivity
+@Subcomponent
 public interface SubComponentBaseActivity extends AndroidInjector<BaseActivity> {
 
     @Subcomponent.Builder

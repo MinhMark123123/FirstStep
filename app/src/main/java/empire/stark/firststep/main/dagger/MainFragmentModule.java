@@ -14,6 +14,7 @@ import empire.stark.firststep.main.view.MainFragment;
  */
 @Module
 public class MainFragmentModule {
+
     @Provides
     Activity activity(MainFragment mainFragment) {
         return mainFragment.getActivity();

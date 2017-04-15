@@ -7,7 +7,7 @@ import android.util.Log;
 import javax.inject.Inject;
 
 import empire.stark.firststep.R;
-import empire.stark.firststep.common.activity.BaseActivity;
+import empire.stark.firststep.common.BaseActivity;
 
 /**
  * Created by YEN_MINH on 4/12/2017 3:32 AM.
