@@ -1,5 +1,5 @@
 # FirstStep
 
-                                          |-> mvp agera
-core dependency injection with dagger 2 -> 
+                                          
+core dependency injection with dagger 2 ->|-> mvp agera 
                                           |-> mvp rxjava2
