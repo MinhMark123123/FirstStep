@@ -21,7 +21,6 @@ import empire.stark.firststep.cat.CatActivity;
 import empire.stark.firststep.common.BaseActivity;
 import empire.stark.firststep.data.YenMinh;
 import empire.stark.firststep.main.MainActivityContract;
-import empire.stark.firststep.main.MainActivityPresenter;
 
 public class MainActivity extends BaseActivity
         implements MainActivityContract.View, NavigationView.OnNavigationItemSelectedListener {
@@ -31,7 +30,7 @@ public class MainActivity extends BaseActivity
     @Inject
     Application application;
     @Inject
-    MainActivityPresenter presenter;
+    MainActivityContract.Presenter presenter;
 
 
     @Override

@@ -1,6 +1,5 @@
 package empire.stark.firststep.main.dagger;
 
-import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
 
@@ -8,6 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 import empire.stark.firststep.data.YenMinh;
 import empire.stark.firststep.main.MainActivityContract;
+import empire.stark.firststep.main.MainActivityPresenter;
 import empire.stark.firststep.main.view.MainActivity;
 
 /**
@@ -22,6 +22,11 @@ public class MainActivityModule {
     @Provides
     MainActivityContract.View view(MainActivity mainActivity) {
         return mainActivity;
+    }
+
+    @Provides
+    MainActivityContract.Presenter presenter(MainActivityPresenter presenter) {
+        return presenter;
     }
 
     @Provides
