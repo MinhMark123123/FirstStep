@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import empire.stark.firststep.R
 import empire.stark.firststep.common.BaseFragment
-import empire.stark.firststep.main.MainFragmentContract
-import empire.stark.firststep.main.MainFragmentPresenter
 import javax.inject.Inject
 
 /**
@@ -17,11 +15,9 @@ import javax.inject.Inject
  * ---------------------------------------------
  */
 
-class MainFragment : BaseFragment(), MainFragmentContract.View {
+class MainFragment : BaseFragment() {
 
 
-    @Inject
-    lateinit var presenter: MainFragmentPresenter
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater!!.inflate(R.layout.fragment_main, container, false)
@@ -29,16 +25,14 @@ class MainFragment : BaseFragment(), MainFragmentContract.View {
 
     override fun onStart() {
         super.onStart()
-        presenter.start()
+
     }
 
     override fun onStop() {
         super.onStop()
-        presenter.stop()
+
     }
-    override fun showLog(message: String) {
-        Log.d(TAG , message)
-    }
+
 
     companion object {
         val TAG = "MainFragment"

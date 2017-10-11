@@ -13,7 +13,7 @@ import empire.stark.firststep.main.view.MainFragment
  * Code and Life ( ^ .,,. ^ )
  * ---------------------------------------------
  */
-@Module(subcomponents = arrayOf(SubComponentBaseFragment::class, MainFragmentSubComponent::class))
+@Module
 abstract class BaseFragmentModule {
 
     @Binds

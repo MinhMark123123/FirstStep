@@ -1,4 +1,4 @@
-package empire.stark.firststep
+package empire.stark.firststep.common.dagger
 
 import android.app.Application
 import android.content.Context
@@ -14,6 +14,4 @@ import dagger.Module
 abstract class AppModule {
     @Binds
     abstract fun bindContext(application: Application): Context
-
-
 }

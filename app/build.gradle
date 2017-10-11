@@ -41,8 +41,11 @@ dependencies {
     compile "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    //rx-java
+    compile "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+    compile "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
     //Agera
-    compile "com.google.android.agera:agera:$ageraVersion"
+    //compile "com.google.android.agera:agera:$ageraVersion"
     //
     compile "com.android.support:appcompat-v7:$supportVersion"
     compile "com.android.support:design:$supportVersion"

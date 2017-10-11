@@ -11,6 +11,7 @@ import empire.stark.firststep.main.view.MainFragment
  */
 @Subcomponent(modules = arrayOf(MainFragmentModule::class))
 interface MainFragmentSubComponent : AndroidInjector<MainFragment> {
+
     @Subcomponent.Builder
     abstract class Builder : AndroidInjector.Builder<MainFragment>()
 }

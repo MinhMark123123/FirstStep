@@ -4,7 +4,6 @@ import android.app.Activity
 
 import dagger.Module
 import dagger.Provides
-import empire.stark.firststep.main.MainFragmentContract
 import empire.stark.firststep.main.view.MainFragment
 
 /**
@@ -14,14 +13,8 @@ import empire.stark.firststep.main.view.MainFragment
  */
 @Module
 class MainFragmentModule {
-
     @Provides
     internal fun activity(mainFragment: MainFragment): Activity {
         return mainFragment.activity
-    }
-
-    @Provides
-    internal fun view(mainFragment: MainFragment): MainFragmentContract.View {
-        return mainFragment
     }
 }
