@@ -1,7 +1,6 @@
 package empire.stark.firststep.main.dagger
 
 import dagger.Module
-import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 import empire.stark.firststep.common.dagger.BaseActivityModule
 import empire.stark.firststep.common.dagger.BaseFragmentModule

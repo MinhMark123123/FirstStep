@@ -12,7 +12,7 @@ import javax.inject.Singleton
  * Created by YEN_MINH on 3/8/2017.
  */
 @Singleton
-@Component(modules = arrayOf(AppModule::class, AndroidSupportInjectionModule::class, BaseActivityBindingModule::class, BaseActivityModule::class))
+@Component(modules = arrayOf(AppModule::class, AndroidSupportInjectionModule::class, BaseActivityBindingModule::class))
 interface AppComponent : AndroidInjector<DaggerApplication> {
     fun inject(app: App)
 
