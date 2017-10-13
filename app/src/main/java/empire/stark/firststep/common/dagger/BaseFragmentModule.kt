@@ -1,12 +1,9 @@
 package empire.stark.firststep.common.dagger
 
-import dagger.Binds
+import android.app.Activity
+import android.support.v4.app.Fragment
 import dagger.Module
-import dagger.android.AndroidInjector
-import dagger.multibindings.IntoMap
-import empire.stark.firststep.common.BaseFragment
-import empire.stark.firststep.main.dagger.MainFragmentSubComponent
-import empire.stark.firststep.main.view.MainFragment
+import dagger.Provides
 
 /**
  * Created by YEN_MINH on 3/11/2017 6:06 PM.
@@ -16,13 +13,8 @@ import empire.stark.firststep.main.view.MainFragment
 @Module
 abstract class BaseFragmentModule {
 
-    @Binds
-    @IntoMap
-    @dagger.android.support.FragmentKey(BaseFragment::class)
-    internal abstract fun bindYourFragmentInjectorFactory(builder: SubComponentBaseFragment.Builder): AndroidInjector.Factory<out android.support.v4.app.Fragment>
-
-    @Binds
-    @IntoMap
-    @dagger.android.support.FragmentKey(MainFragment::class)
-    internal abstract fun bindMainFragmentInjectorFactory(builder: MainFragmentSubComponent.Builder): AndroidInjector.Factory<out android.support.v4.app.Fragment>
+    @Provides
+    fun activity(fragment: Fragment): Activity {
+        return fragment.activity
+    }
 }

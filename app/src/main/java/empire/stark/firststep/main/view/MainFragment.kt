@@ -1,12 +1,13 @@
 package empire.stark.firststep.main.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import empire.stark.firststep.R
 import empire.stark.firststep.common.BaseFragment
+import empire.stark.firststep.common.dagger.scope.PerActivity
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 /**
@@ -14,10 +15,11 @@ import javax.inject.Inject
  * Code and Life ( ^ .,,. ^ )
  * ---------------------------------------------
  */
-
+@PerActivity
 class MainFragment : BaseFragment() {
 
-
+    @Inject
+    lateinit var composite: CompositeDisposable
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater!!.inflate(R.layout.fragment_main, container, false)

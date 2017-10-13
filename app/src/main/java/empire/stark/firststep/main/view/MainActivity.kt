@@ -11,11 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import empire.stark.firststep.R
 import empire.stark.firststep.common.BaseActivity
-import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -25,9 +21,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     @Inject
     lateinit var activity: MainActivity
-
     @Inject
     lateinit var composite: CompositeDisposable
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,19 +35,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
-
         val navigationView = findViewById(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
         //
-        /* supportFragmentManager.beginTransaction().add(R.id.activity_main_container, MainFragment(),
-                 MainFragment.TAG).commit()*/
+        supportFragmentManager.beginTransaction().add(R.id.activity_main_container, MainFragment(),
+                MainFragment.TAG).commit()
         //
         Log.e(TAG, "activity : " + activity.localClassName)
-        //composite.add()
-        composite.add(Observable.just("GOOD")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe())
     }
 
 
