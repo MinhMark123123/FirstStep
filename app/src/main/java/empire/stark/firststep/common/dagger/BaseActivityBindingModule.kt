@@ -7,7 +7,9 @@ import empire.stark.firststep.main.dagger.MainActivityModule
 import empire.stark.firststep.main.view.MainActivity
 
 /**
- * Created by PC on 10/11/2017.
+ * Created by YEN_MINH on 10/11/2017.
+ * Code and Life ( ^ .,,. ^ )
+ * ---------------------------------------------
  */
 @Module
 abstract class BaseActivityBindingModule {
