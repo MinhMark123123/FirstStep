@@ -1,14 +1,11 @@
 package empire.stark.firststep.main.dagger
 
-import android.app.Application
-import android.util.Log
-
 import dagger.Module
-import dagger.Provides
-import empire.stark.firststep.data.YenMinh
-import empire.stark.firststep.main.MainActivityContract
-import empire.stark.firststep.main.MainActivityPresenter
-import empire.stark.firststep.main.view.MainActivity
+import dagger.android.ContributesAndroidInjector
+import empire.stark.firststep.common.dagger.BaseActivityModule
+import empire.stark.firststep.common.dagger.BaseFragmentModule
+import empire.stark.firststep.common.dagger.scope.PerFragment
+import empire.stark.firststep.main.view.MainFragment
 
 /**
  * Created by YEN_MINH on 4/11/2017 3:10 AM.
@@ -17,31 +14,8 @@ import empire.stark.firststep.main.view.MainActivity
  */
 
 @Module
-class MainActivityModule {
-
-    @Provides
-    internal fun view(mainActivity: MainActivity): MainActivityContract.View {
-        return mainActivity
-    }
-
-    @Provides
-    internal fun presenter(presenter: MainActivityPresenter): MainActivityContract.Presenter {
-        return presenter
-    }
-
-    @Provides
-    internal fun application(application: Application): YenMinh {
-        /*if (application != null) {
-            Log.d("MainActivityModule", "application != null")
-        } else {
-            Log.e("MainActivityModule", "application == null")
-        }*/
-        return YenMinh(application)
-    }
-
-
-    /*@Provides
-    Activity activity(MainActivity mainActivity) {
-        return mainActivity;
-    }*/
+abstract class MainActivityModule {
+    @PerFragment
+    @ContributesAndroidInjector(modules = arrayOf(BaseActivityModule::class, MainFragmentModule::class, BaseFragmentModule::class))
+    abstract fun mainFragment(): MainFragment
 }

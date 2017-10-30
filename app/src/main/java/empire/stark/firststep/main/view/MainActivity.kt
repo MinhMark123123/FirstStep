@@ -1,8 +1,6 @@
 package empire.stark.firststep.main.view
 
-import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
@@ -12,19 +10,19 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import empire.stark.firststep.R
-import empire.stark.firststep.cat.CatActivity
 import empire.stark.firststep.common.BaseActivity
-import empire.stark.firststep.data.YenMinh
-import empire.stark.firststep.main.MainActivityContract
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), MainActivityContract.View, NavigationView.OnNavigationItemSelectedListener {
-
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+    companion object {
+        var TAG = "MainActivity"
+    }
 
     @Inject
-    lateinit var yenMinh: YenMinh
+    lateinit var activity: MainActivity
     @Inject
-    lateinit var presenter: MainActivityContract.Presenter
+    lateinit var composite: CompositeDisposable
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,34 +30,20 @@ class MainActivity : BaseActivity(), MainActivityContract.View, NavigationView.O
         setContentView(R.layout.activity_main)
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        val fab = findViewById(R.id.fab) as FloatingActionButton
-        fab.setOnClickListener { startActivity(Intent(this@MainActivity, CatActivity::class.java)) }
-        yenMinh.doSomething()
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
         val toggle = ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
-
         val navigationView = findViewById(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
         //
         supportFragmentManager.beginTransaction().add(R.id.activity_main_container, MainFragment(),
                 MainFragment.TAG).commit()
         //
-
-
+        Log.e(TAG, "activity : " + activity.localClassName)
     }
 
-    override fun onStart() {
-        super.onStart()
-        presenter.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        presenter.stop()
-    }
 
     override fun onBackPressed() {
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
@@ -113,7 +97,5 @@ class MainActivity : BaseActivity(), MainActivityContract.View, NavigationView.O
         return true
     }
 
-    override fun showLog(message: String) {
-        Log.d("MainActivity" , message)
-    }
+
 }
