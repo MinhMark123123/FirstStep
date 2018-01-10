@@ -10,6 +10,7 @@ import empire.stark.firststep.App
 import empire.stark.firststep.R
 import empire.stark.firststep.common.BaseFragment
 import empire.stark.firststep.common.dagger.scope.PerFragment
+import empire.stark.firststep.main.MainFragmentViewModel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -24,25 +25,26 @@ import javax.inject.Inject
 @PerFragment
 class MainFragment : BaseFragment() {
 
-    @Inject
-    lateinit var composite: CompositeDisposable
-    @Inject
-    lateinit var myContext: App
+    @Inject lateinit var composite: CompositeDisposable
+    @Inject lateinit var myContext: App
+    @Inject lateinit var viewModel: MainFragmentViewModel
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         composite.add(Observable.just("").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe())
-        Log.e("tag", "my context : ${myContext.packageName}" )
+        Log.e("tag", "my context : ${myContext.packageName}")
+        lifecycle.addObserver(viewModel)
         return inflater!!.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onStart() {
         super.onStart()
-
+        Log.d(TAG, "onStart")
     }
 
     override fun onStop() {
         super.onStop()
-
+        Log.d(TAG, "onStop")
     }
 
 
