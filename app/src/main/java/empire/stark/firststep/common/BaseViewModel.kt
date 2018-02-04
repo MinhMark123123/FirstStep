@@ -18,5 +18,4 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     abstract fun stop()
 
-
 }

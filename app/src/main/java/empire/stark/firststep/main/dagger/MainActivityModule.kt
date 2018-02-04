@@ -16,6 +16,6 @@ import empire.stark.firststep.main.view.MainFragment
 @Module
 abstract class MainActivityModule {
     @PerFragment
-    @ContributesAndroidInjector(modules = arrayOf(BaseActivityModule::class, MainFragmentModule::class, BaseFragmentModule::class))
+    @ContributesAndroidInjector(modules = [(BaseActivityModule::class), (MainFragmentModule::class), (BaseFragmentModule::class)])
     abstract fun mainFragment(): MainFragment
 }
