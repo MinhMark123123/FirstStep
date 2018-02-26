@@ -1,7 +1,7 @@
 package empire.stark.firststep.main.view
 
-import android.app.Activity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -25,30 +25,21 @@ import javax.inject.Inject
 @PerFragment
 class MainFragment : BaseFragment() {
 
-    @Inject lateinit var composite: CompositeDisposable
-    @Inject lateinit var myContext: App
-    @Inject lateinit var viewModel: MainFragmentViewModel
+    @Inject
+    lateinit var composite: CompositeDisposable
+    @Inject
+    lateinit var myContext: App
+    @Inject
+    lateinit var viewModel: MainFragmentViewModel
 
+    companion object {
+        val TAG = "MainFragment"
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         composite.add(Observable.just("").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe())
         Log.e("tag", "my context : ${myContext.packageName}")
         lifecycle.addObserver(viewModel)
         return inflater!!.inflate(R.layout.fragment_main, container, false)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onStart")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG, "onStop")
-    }
-
-
-    companion object {
-        val TAG = "MainFragment"
     }
 }

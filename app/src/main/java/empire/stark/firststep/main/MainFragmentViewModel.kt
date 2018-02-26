@@ -24,8 +24,9 @@ class MainFragmentViewModel : BaseViewModel(), MainFragmentContract.MainFragment
         Log.d(TAG, "start")
     }
 
-    override fun stop() {
-        Log.d(TAG, "stop")
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun onStop() {
+        Log.d(TAG, "onStop")
     }
 
 

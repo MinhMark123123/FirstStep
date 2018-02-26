@@ -14,8 +14,8 @@ import android.arch.lifecycle.ViewModel
 abstract class BaseViewModel : ViewModel(), LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     abstract fun start()
-
+/*
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    abstract fun stop()
+    abstract fun stop()*/
 
 }
