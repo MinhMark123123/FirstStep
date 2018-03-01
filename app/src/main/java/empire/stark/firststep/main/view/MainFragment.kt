@@ -1,8 +1,7 @@
 package empire.stark.firststep.main.view
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +9,9 @@ import empire.stark.firststep.App
 import empire.stark.firststep.R
 import empire.stark.firststep.common.BaseFragment
 import empire.stark.firststep.common.dagger.scope.PerFragment
+import empire.stark.firststep.databinding.FragmentMainBinding
 import empire.stark.firststep.main.MainFragmentViewModel
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
@@ -31,15 +28,17 @@ class MainFragment : BaseFragment() {
     lateinit var myContext: App
     @Inject
     lateinit var viewModel: MainFragmentViewModel
+    private lateinit var binding: FragmentMainBinding
 
     companion object {
         val TAG = "MainFragment"
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        composite.add(Observable.just("").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe())
-        Log.e("tag", "my context : ${myContext.packageName}")
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
+        binding.setLifecycleOwner(this)
         lifecycle.addObserver(viewModel)
-        return inflater!!.inflate(R.layout.fragment_main, container, false)
+        binding.viewModel = viewModel
+        return binding.root
     }
 }

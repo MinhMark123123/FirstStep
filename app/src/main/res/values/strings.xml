@@ -5,4 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="action_search_title">Search</string>
+    <string name="main_home_nav_title">Home</string>
+    <string name="main_about_nav_title">About</string>
+    <string name="main_more_apps_nav_title">Apps</string>
 </resources>

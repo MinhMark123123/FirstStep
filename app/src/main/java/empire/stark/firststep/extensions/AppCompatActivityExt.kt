@@ -14,8 +14,8 @@ import android.view.View
  */
 /**
  * replace fragment no add to back-stack
- *@fragment : fragment to replace (compat fragment)
- *@containerId: id of frame container
+ *fragment to replace (compat fragment)[fragment]
+ *id of frame container [containerId]
  */
 fun AppCompatActivity.replaceFragment(fragment: Fragment, containerId: Int) {
     supportFragmentManager.transact { replace(containerId, fragment) }
@@ -23,9 +23,9 @@ fun AppCompatActivity.replaceFragment(fragment: Fragment, containerId: Int) {
 
 /**
  * replace fragment and add to back-stack with tag name
- *@fragment : fragment to replace (compat fragment)
- *@containerId: id of frame container
- *@tag : name tag will be add to back-stack
+ *fragment to replace (compat fragment) [fragment]
+ *id of frame container [containerId]
+ *name tag will be add to back-stack [tag]
  */
 fun AppCompatActivity.replaceFragment(fragment: Fragment, containerId: Int, tag: String) {
     supportFragmentManager.transact { replace(containerId, fragment, tag) }
@@ -36,7 +36,7 @@ fun AppCompatActivity.replaceFragment(fragment: Fragment, containerId: Int, tag:
 }*/
 
 /**
- * Runs a FragmentTransaction, then calls commit().
+ * Runs a FragmentTransaction, then calls commit() with [action].
  */
 private inline fun FragmentManager.transact(action: FragmentTransaction.() -> Unit) {
     beginTransaction().apply { action() }.commit()

@@ -16,6 +16,7 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver {
     abstract fun start()
 /*
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    abstract fun stop()*/
+    abstract fun stop()
+    */
 
 }
