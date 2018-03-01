@@ -2,6 +2,7 @@ package empire.stark.firststep.common
 
 import android.content.Context
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import dagger.android.support.AndroidSupportInjection
 
 /**
@@ -14,6 +15,5 @@ open class BaseFragment : Fragment() {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }
-
 
 }

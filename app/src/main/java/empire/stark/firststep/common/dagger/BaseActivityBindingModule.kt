@@ -15,7 +15,7 @@ import empire.stark.firststep.main.view.MainActivity
 abstract class BaseActivityBindingModule {
 
     @PerActivity
-    @ContributesAndroidInjector(modules = arrayOf(MainActivityModule::class, BaseActivityModule::class))
+    @ContributesAndroidInjector(modules = [(MainActivityModule::class), (BaseActivityModule::class)])
     abstract fun mainActivity(): MainActivity
 
 }
