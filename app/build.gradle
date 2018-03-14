@@ -43,9 +43,10 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
-    //rx-java
+    //rx java
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+    implementation "com.github.akarnokd:rxjava2-extensions:$rxjavaExtensionVersion"
     //architecture component
     implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
     implementation "android.arch.persistence.room:runtime:$archRoomVersion"

@@ -9,6 +9,4 @@ import dagger.Module
  */
 @Module
 class BaseFragmentModule {
-
-
 }

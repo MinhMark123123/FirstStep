@@ -26,10 +26,6 @@ import empire.stark.firststep.main.view.MainFragment
 class MainFragmentModule {
 
     /*@Provides
-    fun activityFragment(activity: MainActivity): FragmentActivity {
-        return activity
-    }*/
+    fun viewModel(activity: MainActivity): MainFragmentViewModel = ViewModelProviders.of(activity).get(MainFragmentViewModel::class.java)*/
 
-    @Provides
-    fun viewModel(activity: MainActivity): MainFragmentViewModel = ViewModelProviders.of(activity).get(MainFragmentViewModel::class.java)
 }

@@ -11,9 +11,6 @@ import io.reactivex.disposables.CompositeDisposable
 @Module
 class BaseActivityModule {
 
-    @Provides
-    fun composite(): CompositeDisposable {
-        return CompositeDisposable()
-    }
+
 
 }

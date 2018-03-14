@@ -6,14 +6,17 @@ import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import dagger.android.support.DaggerApplication
 import empire.stark.firststep.App
+import empire.stark.firststep.data.DataRepository
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
 
 /**
  * Created by YEN_MINH on 3/8/2017.
  */
 @Singleton
-@Component(modules = arrayOf(AppModule::class, AndroidSupportInjectionModule::class, BaseActivityBindingModule::class))
+@Component(modules = [AppModule::class, AndroidSupportInjectionModule::class, BaseActivityBindingModule::class])
 interface AppComponent : AndroidInjector<DaggerApplication> {
+    fun dataRepository(): DataRepository
     fun inject(app: App)
 
     override fun inject(instance: DaggerApplication?)
