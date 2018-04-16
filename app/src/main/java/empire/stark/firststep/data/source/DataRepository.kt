@@ -1,4 +1,4 @@
-package empire.stark.firststep.data
+package empire.stark.firststep.data.source
 
 import empire.stark.firststep.common.dagger.scope.Local
 import empire.stark.firststep.common.dagger.scope.Remote
@@ -12,8 +12,6 @@ class DataRepository @Inject constructor(
         @Remote private var remote: DataSource,
         @Local private var local: DataSource
 ) : DataSource {
-    override fun loadData() {
-
-    }
+    override fun loadData() = local.loadData()
 
 }

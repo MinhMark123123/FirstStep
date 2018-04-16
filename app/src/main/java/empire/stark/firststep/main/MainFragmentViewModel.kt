@@ -2,11 +2,8 @@ package empire.stark.firststep.main
 
 import android.arch.lifecycle.*
 import android.util.Log
-import empire.stark.firststep.data.DataRepository
-import io.reactivex.Flowable
-import io.reactivex.android.schedulers.AndroidSchedulers
+import empire.stark.firststep.data.source.DataRepository
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 /**

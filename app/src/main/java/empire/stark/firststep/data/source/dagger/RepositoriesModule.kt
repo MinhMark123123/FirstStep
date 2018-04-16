@@ -1,19 +1,20 @@
-package empire.stark.firststep.data.dagger
+package empire.stark.firststep.data.source.dagger
 
 import dagger.Binds
 import dagger.Module
 import empire.stark.firststep.common.dagger.scope.Local
 import empire.stark.firststep.common.dagger.scope.Remote
-import empire.stark.firststep.data.DataSource
-import empire.stark.firststep.data.local.DataSourceLocal
-import empire.stark.firststep.data.remote.DataSourceRemote
+import empire.stark.firststep.data.source.DataSource
+import empire.stark.firststep.data.source.local.DataSourceLocal
+import empire.stark.firststep.data.source.local.dao.RoomModule
+import empire.stark.firststep.data.source.remote.DataSourceRemote
 import javax.inject.Singleton
 
 /**
  * Created by YEN_MINH on 3/14/2018.
  * Code and Life (o ^_^)o
  */
-@Module
+@Module(includes = [RoomModule::class])
 abstract class RepositoriesModule {
 
     @Local

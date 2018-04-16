@@ -23,6 +23,7 @@ import javax.inject.Inject
  */
 @PerFragment
 class MainFragment : BaseFragment() {
+
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     lateinit var viewModel: MainFragmentViewModel

@@ -10,8 +10,6 @@ import android.view.MenuItem
 import empire.stark.firststep.R
 import empire.stark.firststep.common.BaseActivity
 import empire.stark.firststep.databinding.ActivityMainBinding
-import io.reactivex.disposables.CompositeDisposable
-import javax.inject.Inject
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     companion object {
@@ -26,9 +24,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         //setContentView(R.layout.activity_main)
         //val toolbar = findViewById(R.id.toolbar) as Toolbar
-        setSupportActionBar(binding.appBarMain?.toolbar)
+        setSupportActionBar(binding.appBarMain.toolbar)
         val toggle = ActionBarDrawerToggle(
-                this, binding.drawerLayout, binding.appBarMain?.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+                this, binding.drawerLayout, binding.appBarMain.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         binding.navView.setNavigationItemSelectedListener(this)
@@ -59,9 +57,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val id = item.itemId
 
 
-       /* if (id == R.id.action_settings) {
-            return true
-        }*/
+        /* if (id == R.id.action_settings) {
+             return true
+         }*/
 
         return super.onOptionsItemSelected(item)
     }
