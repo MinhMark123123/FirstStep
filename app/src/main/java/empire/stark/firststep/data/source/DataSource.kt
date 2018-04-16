@@ -9,4 +9,8 @@ import io.reactivex.Flowable
  */
 interface DataSource {
     fun loadData(): Flowable<List<DataSample>>
+
+    fun insertData(dataSample: DataSample)
+
+    fun updateData(dataSample: DataSample)
 }

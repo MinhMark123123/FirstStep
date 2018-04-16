@@ -10,5 +10,13 @@ import javax.inject.Inject
  * Code and Life (o ^_^)o
  */
 class DataSourceRemote @Inject constructor() : DataSource {
+    override fun insertData(dataSample: DataSample) {
+
+    }
+
+    override fun updateData(dataSample: DataSample) {
+
+    }
+
     override fun loadData(): Flowable<List<DataSample>> = Flowable.just(null)
 }
