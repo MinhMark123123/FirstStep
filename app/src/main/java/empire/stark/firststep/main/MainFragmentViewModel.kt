@@ -71,7 +71,10 @@ class MainFragmentViewModel @Inject constructor(
 
     override fun updateData() {
         if (currentDataSelect.value != null) {
-            executor.diskIO.execute { dataRepository.updateData(currentDataSelect.value!!) }
+            if (valueEdit.value != null) {
+                currentDataSelect.value?.data = valueEdit.value!!
+                executor.netWorkIO.execute { dataRepository.updateData(currentDataSelect.value!!) }
+            }
         }
     }
 

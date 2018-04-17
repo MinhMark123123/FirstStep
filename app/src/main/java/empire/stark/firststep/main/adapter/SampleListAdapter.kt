@@ -14,10 +14,17 @@ import empire.stark.firststep.databinding.ItemDataBinding
 
 class SampleListAdapter : BaseDiffAdapter<DataSample, SampleListAdapter.ViewHolder>() {
 
+    var onItemClickListener: OnItemClickListener? = null
     var differData = AsyncListDiffer<DataSample>(this, differItemCallBack())
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = LayoutInflater.from(parent.context).inflate(R.layout.item_data, parent, false)
-        return ViewHolder(view)
+        var viewHolder = ViewHolder(view)
+        viewHolder.itemView.setOnClickListener {
+            var position = viewHolder.adapterPosition
+            onItemClickListener?.onItemClickListener(position, differData.currentList[position])
+        }
+        return viewHolder
     }
 
     override fun getItemCount(): Int = differData.currentList.size
@@ -43,5 +50,9 @@ class SampleListAdapter : BaseDiffAdapter<DataSample, SampleListAdapter.ViewHold
             binding.item = dataSample
             binding.executePendingBindings()
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClickListener(position: Int, dataSample: DataSample)
     }
 }

@@ -12,6 +12,7 @@ import empire.stark.firststep.R
 import empire.stark.firststep.common.BaseFragment
 import empire.stark.firststep.common.dagger.ViewModelFactory
 import empire.stark.firststep.common.dagger.scope.PerFragment
+import empire.stark.firststep.data.DataSample
 import empire.stark.firststep.databinding.FragmentMainBinding
 import empire.stark.firststep.main.MainFragmentViewModel
 import empire.stark.firststep.main.adapter.SampleListAdapter
@@ -50,5 +51,10 @@ class MainFragment : BaseFragment() {
         val layoutManager = LinearLayoutManager(activity!!, LinearLayoutManager.VERTICAL, false)
         binding.recycler.layoutManager = layoutManager
         binding.recycler.adapter = adapter
+        adapter.onItemClickListener = object : SampleListAdapter.OnItemClickListener {
+            override fun onItemClickListener(position: Int, dataSample: DataSample) {
+                viewModel.currentDataSelect.value = dataSample
+            }
+        }
     }
 }
