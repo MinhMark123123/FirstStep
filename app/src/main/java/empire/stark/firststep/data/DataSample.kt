@@ -12,5 +12,5 @@ data class DataSample(
         var counter: Int,
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
-        var id: Int = -1
+        var id: Int? = null
 )

@@ -14,9 +14,7 @@ class DataRepository @Inject constructor(
         @Local private var local: DataSource
 ) : DataSource {
 
-
     override fun loadData() = local.loadData()
     override fun insertData(dataSample: DataSample) = local.insertData(dataSample)
-
     override fun updateData(dataSample: DataSample) = local.updateData(dataSample)
 }

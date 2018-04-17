@@ -3,6 +3,7 @@ package empire.stark.firststep.main.view
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import empire.stark.firststep.common.dagger.ViewModelFactory
 import empire.stark.firststep.common.dagger.scope.PerFragment
 import empire.stark.firststep.databinding.FragmentMainBinding
 import empire.stark.firststep.main.MainFragmentViewModel
+import empire.stark.firststep.main.adapter.SampleListAdapter
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -28,6 +30,7 @@ class MainFragment : BaseFragment() {
     lateinit var viewModelFactory: ViewModelFactory
     lateinit var viewModel: MainFragmentViewModel
     private lateinit var binding: FragmentMainBinding
+    private var adapter = SampleListAdapter()
 
     companion object {
         val TAG = "MainFragment"
@@ -39,6 +42,13 @@ class MainFragment : BaseFragment() {
         viewModel = ViewModelProviders.of(activity!!, viewModelFactory).get(MainFragmentViewModel::class.java)
         lifecycle.addObserver(viewModel)
         binding.viewModel = viewModel
+        setupView()
         return binding.root
+    }
+
+    private fun setupView() {
+        val layoutManager = LinearLayoutManager(activity!!, LinearLayoutManager.VERTICAL, false)
+        binding.recycler.layoutManager = layoutManager
+        binding.recycler.adapter = adapter
     }
 }

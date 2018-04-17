@@ -8,8 +8,10 @@ package empire.stark.firststep.main
  */
 interface MainFragmentContract {
 
-    interface ViewModel {
+    interface ViewModelContract {
         fun loadData()
+        fun updateData()
+        fun insertData()
         fun openDetail()
         fun increaseCounter()
     }

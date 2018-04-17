@@ -3,10 +3,13 @@ package empire.stark.firststep.main
 import android.databinding.BindingAdapter
 import android.os.Build
 import android.support.transition.TransitionManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.ViewGroup
 import empire.stark.firststep.R
+import empire.stark.firststep.data.DataSample
+import empire.stark.firststep.main.adapter.SampleListAdapter
 
 /**
  * Created by YEN_MINH on 3/2/2018.
@@ -14,7 +17,7 @@ import empire.stark.firststep.R
  */
 object MainFragmentViewBinding {
 
-    @BindingAdapter("animatedVisibility")
+    /*@BindingAdapter("animatedVisibility")
     @JvmStatic
     fun setVisibility(view: View, visibility: Int) {
         val endAnimVisibility = view.getTag(R.id.finalVisibility)
@@ -37,6 +40,16 @@ object MainFragmentViewBinding {
         } else {
             TransitionManager.beginDelayedTransition(view.rootView as ViewGroup)
             view.visibility = visibility
+        }
+    }*/
+    @BindingAdapter("app:dataList")
+    @JvmStatic
+    fun submitDatalist(recycler: RecyclerView, dataList: ArrayList<DataSample>?) {
+        var adapter = recycler.adapter as SampleListAdapter
+        if (dataList != null) {
+            adapter.differData.submitList(dataList)
+        } else {
+            adapter.differData.submitList(ArrayList())
         }
     }
 }
