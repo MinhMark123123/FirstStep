@@ -1,3 +1,4 @@
+/*
 package empire.stark.firststep.main.adapter
 
 import android.databinding.DataBindingUtil
@@ -8,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import empire.stark.firststep.R
-import empire.stark.firststep.common.adapter.BaseDiffAdapter
 import empire.stark.firststep.data.DataSample
 import empire.stark.firststep.databinding.ItemDataBinding
 
@@ -43,9 +43,11 @@ class SampleListAdapter : BaseDiffAdapter<DataSample, SampleListAdapter.ViewHold
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding: ItemDataBinding = DataBindingUtil.bind(itemView)!!
-        /**
+        */
+/**
          * execute binding item immediately
-         */
+         *//*
+
         fun bind(dataSample: DataSample) {
             binding.item = dataSample
             binding.executePendingBindings()
@@ -55,4 +57,4 @@ class SampleListAdapter : BaseDiffAdapter<DataSample, SampleListAdapter.ViewHold
     interface OnItemClickListener {
         fun onItemClickListener(position: Int, dataSample: DataSample)
     }
-}
+}*/

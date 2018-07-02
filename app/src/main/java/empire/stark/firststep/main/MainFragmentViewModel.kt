@@ -36,13 +36,7 @@ class MainFragmentViewModel @Inject constructor(
         val TAG = "MainFragmentViewModel"
     }
 
-    override fun start() {
-        /*if (counter.value == null) {
-            counter.value = 0
-        }*/
-        loadData()
-        //dataRepository.loadData()
-    }
+
 
     override fun increaseCounter() {
         //counter.value = counter.value?.plus(1)
