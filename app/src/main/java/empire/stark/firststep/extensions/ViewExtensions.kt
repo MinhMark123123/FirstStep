@@ -1,7 +1,7 @@
 package empire.stark.firststep.extensions
 
 import android.graphics.drawable.GradientDrawable
-import android.support.v4.graphics.drawable.DrawableCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import android.view.View
 import android.widget.ImageView
 

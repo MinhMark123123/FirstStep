@@ -4,9 +4,8 @@ import dagger.Binds
 import dagger.Module
 import empire.stark.firststep.common.dagger.scope.Local
 import empire.stark.firststep.common.dagger.scope.Remote
-import empire.stark.firststep.data.source.DataSource
+import empire.stark.firststep.data.source.DataSampleSource
 import empire.stark.firststep.data.source.local.DataSourceLocal
-import empire.stark.firststep.data.source.local.dao.RoomModule
 import empire.stark.firststep.data.source.remote.DataSourceRemote
 import javax.inject.Singleton
 
@@ -20,10 +19,10 @@ abstract class RepositoriesModule {
     @Local
     @Binds
     @Singleton
-    abstract fun localDataSource(dataSource: DataSourceLocal): DataSource
+    abstract fun localDataSource(dataSource: DataSourceLocal): DataSampleSource
 
     @Remote
     @Binds
     @Singleton
-    abstract fun remoteDataSource(dataSource: DataSourceRemote): DataSource
+    abstract fun remoteDataSource(dataSource: DataSourceRemote): DataSampleSource
 }

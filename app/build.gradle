@@ -4,16 +4,17 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     //buildToolsVersion '27'
     defaultConfig {
         applicationId "empire.stark.firststep"
         minSdkVersion 14
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
     }
     dataBinding {
         enabled = true
@@ -34,7 +35,7 @@ kapt {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestCompile('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //dagger
@@ -48,17 +49,20 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
     implementation "com.github.akarnokd:rxjava2-extensions:$rxjavaExtensionVersion"
     //architecture component
-    implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
-    implementation "android.arch.persistence.room:runtime:$archRoomVersion"
-    implementation "android.arch.persistence.room:rxjava2:$archRoomVersion"
-    kapt "android.arch.lifecycle:compiler:$archLifecycleVersion"
-    kapt "android.arch.persistence.room:compiler:$archRoomVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+    implementation "androidx.paging:paging-runtime:$archPagingVersion"
+    implementation "android.arch.paging:rxjava2:1.0.1"
+    implementation "androidx.room:room-runtime:$archRoomVersion"
+    implementation "androidx.room:room-rxjava2:$archRoomVersion"
+
+    kapt "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
+    kapt "androidx.room:room-compiler:$archRoomVersion"
 
     //
-    implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation "com.android.support:design:$supportVersion"
-    implementation "com.android.support:cardview-v7:$supportVersion"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation "androidx.appcompat:appcompat:$supportVersion"
+    implementation "com.google.android.material:material:$supportVersion"
+    implementation "androidx.cardview:cardview:$supportVersion"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     testCompile 'junit:junit:4.12'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

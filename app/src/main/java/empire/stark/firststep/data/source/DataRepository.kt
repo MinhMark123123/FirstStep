@@ -10,11 +10,13 @@ import javax.inject.Inject
  * Code and Life (o ^_^)o
  */
 class DataRepository @Inject constructor(
-        @Remote private var remote: DataSource,
-        @Local private var local: DataSource
-) : DataSource {
+        @Remote private var remote: DataSampleSource,
+        @Local private var local: DataSampleSource
+) : DataSampleSource {
 
-    override fun loadData() = local.loadData()
+
+
     override fun insertData(dataSample: DataSample) = local.insertData(dataSample)
     override fun updateData(dataSample: DataSample) = local.updateData(dataSample)
+    override fun deleteDataTable() = local.deleteDataTable()
 }

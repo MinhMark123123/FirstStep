@@ -1,9 +1,10 @@
-package empire.stark.firststep.data.source.local.dao
+package empire.stark.firststep.data.source.dagger
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import empire.stark.firststep.App
+import empire.stark.firststep.data.source.local.dao.RoomDatabase
 import javax.inject.Singleton
 
 @Module

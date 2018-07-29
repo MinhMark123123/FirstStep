@@ -1,11 +1,13 @@
 package empire.stark.firststep.main
 
-import android.arch.lifecycle.*
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.MutableLiveData
 import android.util.Log
 import empire.stark.firststep.common.BaseViewModel
 import empire.stark.firststep.data.DataSample
 import empire.stark.firststep.data.source.DataRepository
 import empire.stark.firststep.extensions.AppExecutors
+import empire.stark.firststep.extensions.SingleLiveEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -22,6 +24,7 @@ class MainFragmentViewModel @Inject constructor(
 ) : BaseViewModel(), LifecycleObserver, MainFragmentContract.ViewModelContract {
     var valueEdit = MutableLiveData<String>()
     var valueInsert = MutableLiveData<String>()
+    var clearFocusEditText = SingleLiveEvent<Void>()
     var lisData = MutableLiveData<ArrayList<DataSample>>()
     var currentDataSelect = MutableLiveData<DataSample>()
     private var executor = AppExecutors()
@@ -36,20 +39,19 @@ class MainFragmentViewModel @Inject constructor(
         val TAG = "MainFragmentViewModel"
     }
 
-    override fun start() {
-        /*if (counter.value == null) {
-            counter.value = 0
-        }*/
+    override fun onStart() {
+        super.onStart()
         loadData()
-        //dataRepository.loadData()
     }
 
-    override fun increaseCounter() {
+    override fun increaseCounter(position: Int, dataSample: DataSample) {
         //counter.value = counter.value?.plus(1)
+        dataSample.counter++
+        executor.diskIO.execute { dataRepository.updateData(dataSample) }
     }
 
     override fun loadData() {
-        compositeDisposable.add(
+        /*compositeDisposable.add(
                 dataRepository.loadData()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -57,7 +59,7 @@ class MainFragmentViewModel @Inject constructor(
                                 { next -> lisData.postValue(ArrayList(next)) },
                                 { error -> error.printStackTrace() }
                         )
-        )
+        )*/
     }
 
     override fun onCleared() {
@@ -69,18 +71,15 @@ class MainFragmentViewModel @Inject constructor(
 
     }
 
-    override fun updateData() {
-        if (currentDataSelect.value != null) {
-            if (valueEdit.value != null) {
-                currentDataSelect.value?.data = valueEdit.value!!
-                executor.netWorkIO.execute { dataRepository.updateData(currentDataSelect.value!!) }
-            }
-        }
+    override fun deleteData() {
+        executor.diskIO.execute { dataRepository.deleteDataTable() }
     }
 
     override fun insertData() {
         if (valueInsert.value != null) {
             executor.netWorkIO.execute { dataRepository.insertData(DataSample(valueInsert.value!!, 1)) }
+            clearFocusEditText.call()
         }
     }
+
 }

@@ -1,13 +1,15 @@
 package empire.stark.firststep.main.view
 
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import empire.stark.firststep.App
+import android.view.WindowManager
 import empire.stark.firststep.R
 import empire.stark.firststep.common.BaseFragment
 import empire.stark.firststep.common.dagger.ViewModelFactory
@@ -15,8 +17,6 @@ import empire.stark.firststep.common.dagger.scope.PerFragment
 import empire.stark.firststep.data.DataSample
 import empire.stark.firststep.databinding.FragmentMainBinding
 import empire.stark.firststep.main.MainFragmentViewModel
-import empire.stark.firststep.main.adapter.SampleListAdapter
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 /**
@@ -31,7 +31,6 @@ class MainFragment : BaseFragment() {
     lateinit var viewModelFactory: ViewModelFactory
     lateinit var viewModel: MainFragmentViewModel
     private lateinit var binding: FragmentMainBinding
-    private var adapter = SampleListAdapter()
 
     companion object {
         val TAG = "MainFragment"
@@ -44,17 +43,21 @@ class MainFragment : BaseFragment() {
         lifecycle.addObserver(viewModel)
         binding.viewModel = viewModel
         setupView()
+        subscribeClearFocus()
         return binding.root
     }
+
+    private fun subscribeClearFocus() = viewModel.clearFocusEditText.observe(this,
+            Observer {
+                activity!!.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+            }
+    )
 
     private fun setupView() {
         val layoutManager = LinearLayoutManager(activity!!, LinearLayoutManager.VERTICAL, false)
         binding.recycler.layoutManager = layoutManager
-        binding.recycler.adapter = adapter
-        adapter.onItemClickListener = object : SampleListAdapter.OnItemClickListener {
-            override fun onItemClickListener(position: Int, dataSample: DataSample) {
-                viewModel.currentDataSelect.value = dataSample
-            }
-        }
+
     }
+
+    private fun visibleFocusEditText() = activity!!.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
 }

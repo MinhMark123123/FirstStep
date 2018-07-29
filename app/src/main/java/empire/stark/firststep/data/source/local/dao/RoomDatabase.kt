@@ -1,7 +1,7 @@
 package empire.stark.firststep.data.source.local.dao
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import empire.stark.firststep.data.DataSample
 
 @Database(entities = [DataSample::class], version = 1)
